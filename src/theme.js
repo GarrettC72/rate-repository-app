@@ -3,6 +3,10 @@ const theme = {
     textPrimary: '#24292e',
     textSecondary: '#586069',
     primary: '#0366d6',
+    white: 'white'
+  },
+  background: {
+    primary: '#e1e4e8',
   },
   fontSizes: {
     body: 14,
@@ -18,9 +22,6 @@ const theme = {
   appBar: {
     container: {
       background: '#24292e',
-    },
-    tab: {
-      textPrimary: '#fff',
     }
   }
 };

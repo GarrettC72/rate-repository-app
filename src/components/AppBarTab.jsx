@@ -5,9 +5,9 @@ import theme from "../theme";
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.appBar.tab.textPrimary,
+    color: theme.colors.white,
     paddingVertical: 20,
-    paddingHorizontal: 14,
+    paddingHorizontal: 15,
   }
 })
 
