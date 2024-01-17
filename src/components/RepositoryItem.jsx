@@ -8,32 +8,45 @@ const styles = StyleSheet.create({
   fullContainer: {
     backgroundColor: theme.colors.white,
     padding: 15,
-    gap: 15
   },
   infoContainer: {
     flexDirection: 'row',
-    gap: 20
+    marginBottom: 15,
   },
   infoText: {
-    gap: 5
+    flexGrow: 1,
+    flexShrink: 1
+  },
+  nameText: {
+    marginBottom: 5
+  },
+  descriptionText: {
+    flexGrow: 1,
   },
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 5
+  avatarContainer: {
+    flexGrow: 0,
+    marginRight: 20,
   },
-  language: {
-    backgroundColor: theme.colors.primary,
-    alignSelf: 'flex-start',
-    padding: 5,
-    borderRadius: 3
+  avatar: {
+    width: 45,
+    height: 45,
+    borderRadius: theme.roundness
+  },
+  languageContainer: {
+    marginTop: 10,
+    flexDirection: 'row',
   },
   languageText: {
-    color: theme.colors.white
+    color: theme.colors.white,
+    backgroundColor: theme.colors.primary,
+    borderRadius: theme.roundness,
+    flexGrow: 0,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
   }
 });
 
@@ -41,18 +54,25 @@ const RepositoryItem = ({ item }) => {
   return (
     <View style={styles.fullContainer}>
       <View style={styles.infoContainer}>
-        <Image
-          style={styles.avatar}
-          source={{
-            uri: item.ownerAvatarUrl
-          }}
-        />
+        <View style={styles.avatarContainer}>
+          <Image style={styles.avatar} source={{ uri: item.ownerAvatarUrl }} />
+        </View>
         <View style={styles.infoText}>
-          <Text fontWeight='bold' fontSize='subheading'>{item.fullName}</Text>
-          <Text color='textSecondary'>{item.description}</Text>
-          <View style={styles.language}>
-            <Text style={styles.languageText}>{item.language}</Text>
-          </View>
+          <Text
+            style={styles.nameText}
+            fontWeight='bold'
+            fontSize='subheading'
+          >
+            {item.fullName}
+          </Text>
+          <Text style={styles.descriptionText} color='textSecondary'>
+            {item.description}
+          </Text>
+          {item.language ? (
+            <View style={styles.languageContainer}>
+              <Text style={styles.languageText}>{item.language}</Text>
+            </View>
+          ) : null}
         </View>
       </View>
       <View style={styles.statsContainer}>

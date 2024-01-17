@@ -1,24 +1,34 @@
-import { Pressable, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Link } from "react-router-native";
 
 import Text from "./Text";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
-  text: {
-    color: theme.colors.white,
+  tabTouchable: {
+    flexGrow: 0,
+  },
+  tabContainer: {
     paddingVertical: 20,
     paddingHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  text: {
+    color: theme.colors.white,
   }
 })
 
-const AppBarTab = ({ text, path }) => {
+const AppBarTab = ({ children, ...props }) => {
   return (
-    <Pressable>
-      <Link to={path}>
-        <Text style={styles.text} fontWeight="bold">{text}</Text>
+    <View style={styles.tabContainer}>
+      <Link style={styles.tabTouchable} {...props}>
+        <Text style={styles.text} fontWeight="bold">
+          {children}
+        </Text>
       </Link>
-    </Pressable>
+    </View>
   )
 };
 
