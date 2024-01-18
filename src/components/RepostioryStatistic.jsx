@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native"
 
 import Text from "./Text";
+import formatInThousands from "../utils/formatInThousands";
 
 const styles = StyleSheet.create({
   statisticContainer: {
@@ -15,11 +16,10 @@ const styles = StyleSheet.create({
 });
 
 const RepositoryStatistic = ({ name, value }) => {
-  const statValue = value < 1000 ? value : parseFloat((value / 1000).toFixed(1)) + "k"
   return (
     <View style={styles.statisticContainer}>
       <Text style={styles.statisticValue} fontWeight='bold'>
-        {statValue}
+        {formatInThousands(value)}
       </Text>
       <Text color='textSecondary'>{name}</Text>
     </View>
