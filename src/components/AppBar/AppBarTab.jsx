@@ -1,8 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import { Link } from "react-router-native";
 
-import Text from "./Text";
-import theme from "../theme";
+import Text from "../Text";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   tabTouchable: {
@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ({ children, ...props }) => {
   return (
-    <View style={styles.tabContainer}>
-      <Link style={styles.tabTouchable} {...props}>
+    <Link style={styles.tabTouchable} {...props}>
+      <View style={styles.tabContainer}>
         <Text style={styles.text} fontWeight="bold">
           {children}
         </Text>
-      </Link>
-    </View>
+      </View>
+    </Link>
   )
 };
 

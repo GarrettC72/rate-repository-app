@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View } from "react-native";
 
-import Text from './Text';
-import theme from "../theme";
+import Text from '../Text';
+import theme from "../../theme";
 import RepositoryStatistic from "./RepostioryStatistic";
 
 const styles = StyleSheet.create({

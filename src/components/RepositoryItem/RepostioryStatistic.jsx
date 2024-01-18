@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native"
 
-import Text from "./Text";
-import formatInThousands from "../utils/formatInThousands";
+import Text from "../Text";
+import formatInThousands from "../../utils/formatInThousands";
 
 const styles = StyleSheet.create({
   statisticContainer: {
