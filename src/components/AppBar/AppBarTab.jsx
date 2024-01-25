@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { Link } from "react-router-native";
 
 import Text from "../Text";
@@ -20,15 +20,21 @@ const styles = StyleSheet.create({
   }
 })
 
-const AppBarTab = ({ children, ...props }) => {
-  return (
-    <Link style={styles.tabTouchable} {...props}>
-      <View style={styles.tabContainer}>
-        <Text style={styles.text} fontWeight="bold">
-          {children}
-        </Text>
-      </View>
+const AppBarTab = ({ children, to, ...props }) => {
+  const content = (
+    <View style={styles.tabContainer}>
+      <Text style={styles.text} fontWeight="bold">
+        {children}
+      </Text>
+    </View>
+  );
+
+  return to ? (
+    <Link style={styles.tabTouchable} to={to} {...props}>
+      {content}
     </Link>
+  ) : (
+    <Pressable {...props}>{content}</Pressable>
   )
 };
 
