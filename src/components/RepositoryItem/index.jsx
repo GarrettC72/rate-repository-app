@@ -1,8 +1,10 @@
 import { Image, StyleSheet, View } from "react-native";
+import * as Linking from 'expo-linking';
 
 import Text from '../Text';
 import theme from "../../theme";
 import RepositoryStatistic from "./RepostioryStatistic";
+import Button from "../Button";
 
 const styles = StyleSheet.create({
   fullContainer: {
@@ -47,10 +49,13 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     paddingVertical: 3,
     paddingHorizontal: 6,
+  },
+  urlButton: {
+    marginTop: 15
   }
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, displayButton }) => {
   return (
     <View testID="repositoryItem" style={styles.fullContainer}>
       <View style={styles.infoContainer}>
@@ -81,6 +86,14 @@ const RepositoryItem = ({ item }) => {
         <RepositoryStatistic name='Reviews' value={item.reviewCount} />
         <RepositoryStatistic name='Rating' value={item.ratingAverage} />
       </View>
+      {displayButton && (
+        <Button
+          style={styles.urlButton}
+          onPress={() => Linking.openURL(item.url)}
+        >
+          Open in GitHub
+        </Button>
+      )}
     </View>
   )
 }
