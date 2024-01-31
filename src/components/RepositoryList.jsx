@@ -22,12 +22,12 @@ export const RepositoryListContainer = ({ repositories }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <Pressable onPress={() => navigate(`/repositories/${item.id}`)}>
           <RepositoryItem item={item} />
         </Pressable>
       )}
-      keyExtractor={item => item.id}
+      keyExtractor={({ id }) => id}
     />
   );
 }
