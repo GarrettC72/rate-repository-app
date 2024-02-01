@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   textInput: {
     paddingVertical: 15,
     paddingHorizontal: 15,
+    paddingTop: 'auto',
     borderWidth: 1,
     borderStyle: 'solid',
     fontSize: theme.fontSizes.body,
