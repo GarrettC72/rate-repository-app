@@ -1,8 +1,10 @@
 import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import { useNavigate } from 'react-router-native';
+import { useState } from 'react';
 
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
+import RepositorySortPicker from './RepositorySortPicker';
 
 const styles = StyleSheet.create({
   separator: {
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, sortOption, setSortOption }) => {
   const navigate = useNavigate();
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -28,14 +30,34 @@ export const RepositoryListContainer = ({ repositories }) => {
         </Pressable>
       )}
       keyExtractor={({ id }) => id}
+      ListHeaderComponent={(
+        <RepositorySortPicker
+          sortOption={sortOption}
+          setSortOption={setSortOption} 
+        />
+      )}
     />
   );
 }
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const [sortOption, setSortOption] = useState("CREATED_AT,DESC");
 
-  return <RepositoryListContainer repositories={repositories} />
+  const sortOptions = sortOption.split(",");
+  const queryParams = {
+    orderBy: sortOptions[0],
+    orderDirection: sortOptions[1],
+  }
+
+  const { repositories } = useRepositories(queryParams);
+
+  return (
+    <RepositoryListContainer
+      repositories={repositories}
+      sortOption={sortOption}
+      setSortOption={setSortOption}
+    />
+  );
 };
 
 export default RepositoryList;
