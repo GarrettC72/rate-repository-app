@@ -1,15 +1,27 @@
 import { Picker } from '@react-native-picker/picker';
 import { StyleSheet, View } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
-  sortPicker: {
-    padding: 10,
+  listHeaderContainer: {
+    padding: 15,
   },
+  searchbar: {
+    backgroundColor: theme.colors.white,
+    borderRadius: theme.roundness
+  }
 });
 
-const RepositorySortPicker = ({ sortOption, setSortOption }) => {
+const RepositoryListHeader = ({ sortOption, setSortOption, searchQuery, setSearchQuery }) => {
   return (
-    <View style={styles.sortPicker}>
+    <View style={styles.listHeaderContainer}>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={setSearchQuery}
+        value={searchQuery}
+        style={styles.searchbar}
+      />
       <Picker
         selectedValue={sortOption}
         onValueChange={(itemValue) =>
@@ -24,4 +36,4 @@ const RepositorySortPicker = ({ sortOption, setSortOption }) => {
   );
 };
 
-export default RepositorySortPicker;
+export default RepositoryListHeader;
