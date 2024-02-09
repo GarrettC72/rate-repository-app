@@ -1,7 +1,8 @@
 import { Picker } from '@react-native-picker/picker';
 import { StyleSheet, View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import theme from '../theme';
+
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   listHeaderContainer: {

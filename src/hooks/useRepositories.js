@@ -9,7 +9,7 @@ const useRepositories = ({ orderBy, orderDirection, searchKeyword }) => {
     // Other options
   });
 
-  return { repositories : data?.repositories, ...result };
+  return { repositories: data?.repositories, ...result };
 };
 
 export default useRepositories;
