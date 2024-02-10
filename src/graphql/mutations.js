@@ -26,3 +26,9 @@ export const SIGN_UP = gql`
   }
   ${USER_DETAILS}
 `
+
+export const DELETE_REVIEW = gql`
+  mutation deleteReview($repositoryId: ID!) {
+    deleteReview(id: $repositoryId)
+  }
+`

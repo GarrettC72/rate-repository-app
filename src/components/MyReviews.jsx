@@ -5,7 +5,7 @@ import ReviewItem from "./ReviewItem";
 import ItemSeparator from "./ItemSeparator";
 
 const MyReviews = () => {
-  const { currentUser } = useCurrentUser(true);
+  const { currentUser, refetch } = useCurrentUser(true);
   
   if (currentUser == null) {
     return null;
@@ -17,7 +17,7 @@ const MyReviews = () => {
     <FlatList
       data={reviews}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} displayRepositoryName />}
+      renderItem={({ item }) => <ReviewItem review={item} refetch={refetch} displayUserView />}
       keyExtractor={({ id }) => id}
     />
   )
