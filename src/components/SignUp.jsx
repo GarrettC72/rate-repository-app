@@ -79,7 +79,7 @@ const SignUp = () => {
       const signUpResult = await signUp({ username, password });
       if (signUpResult.createUser) {
         await signIn({ username, password });
-        navigate("/");
+        navigate("/", { replace: true });
       }
     } catch (e) {
       console.log(e);
